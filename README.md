@@ -9,11 +9,12 @@
 ## Contributing
 Contributor Covenant.
 
-## Link 
+## Heroku Link 
+http://thenotetakerliz.herokuapp.com/
 
 ## Questions
 If you have any questions about this project, send me an email at lizethariasc14@gmail.com or contact me through my [GitHub](https://github.com/lizariasc).
 
 
 ## Mockup 
-![Mock-up]()
+![Mock-up](mockup.gif)
