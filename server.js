@@ -12,7 +12,7 @@ app.use(express.json());
 // make files readily available 
 app.use(express.static('public'));
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const { static } = require("express");
 const { notStrictEqual } = require('assert');
 
@@ -84,6 +84,6 @@ app.delete("/api/notes/:id", function (req, res) {
 
 
 
-app.listen(3000, () => {
-       console.log(`API server now on port 3000!`);
- });
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
