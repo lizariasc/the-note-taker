@@ -22,10 +22,12 @@ const { static } = require("express");
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
+
 // return notes.html file
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "public/notes.html"));
 });
+
 // return all saved notes as JSON
 app.get("/api/notes", function (req, res) {
     fs.readFile("db/db.json", (err, data) => {
