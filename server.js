@@ -14,6 +14,7 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3001;
 const { static } = require("express");
+const { notStrictEqual } = require('assert');
 
 
 // get routes
@@ -37,6 +38,26 @@ app.get("/api/notes", function (req, res) {
     });
 });
 
+// receive a note, save on the request body and add it to the db.json.
+// return the new note
+
+app.post("/api/notes", function (req, res) {
+ const newNote = req.body;
+ fs.readFile("db/db.json", (err, data) => {
+    if (err) throw err;
+
+    var notes = JSON.parse(data);
+
+    var addedNote = [...notes, newNote];
+
+    fs.writeFile("db/db.json", JSON.stringify(addedNote), (err, data) => {
+      if (err) {console.log(err)};
+      console.log("A note has been added");
+    })
+  });
+
+  res.json(newNote);
+}); 
 
 
 app.listen(3000, () => {
