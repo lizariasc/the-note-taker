@@ -60,7 +60,28 @@ app.post("/api/notes", function (req, res) {
 }); 
 
 // delete notes
-app.delete("/api/notes/:id", function (req, res) {})
+app.delete("/api/notes/:id", function (req, res) {
+    const deleteNote = req.params.id
+
+  fs.readFile("db/db.json", (err, data) => {
+    if (err) throw err;
+
+    var notes = JSON.parse(data);
+
+    var deletedNote = notes.filter( note => {
+      if (note.id !== deleteNote) {
+        return note
+      }
+    })
+
+    fs.writeFile("db/db.json", JSON.stringify(deletedNote), (err, data) => {
+      if (err) {console.log(err)};
+      console.log("A note has been deleted");
+    })
+  });
+  res.json(deleteNote)
+}); 
+
 
 
 app.listen(3000, () => {
