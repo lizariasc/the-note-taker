@@ -42,7 +42,7 @@ app.get("/api/notes", function (req, res) {
 // return the new note
 
 app.post("/api/notes", function (req, res) {
- const newNote = req.body;
+ const newNote = {...req.body, id: req.body.title.toLowerCase().replace(/\s+/g, "")};;
  fs.readFile("db/db.json", (err, data) => {
     if (err) throw err;
 
@@ -58,6 +58,9 @@ app.post("/api/notes", function (req, res) {
 
   res.json(newNote);
 }); 
+
+// delete notes
+app.delete("/api/notes/:id", function (req, res) {})
 
 
 app.listen(3000, () => {
