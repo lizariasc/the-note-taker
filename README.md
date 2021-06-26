@@ -1,1 +1,1 @@
-# Note Taker Starter Code
+# THE NOTE TAKER
